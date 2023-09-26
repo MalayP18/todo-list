@@ -1,24 +1,24 @@
-# todo-list
+# Please follow the below mentioned instrcutions:
 
-## Project setup
+Dependecies: Node.js version >= 16 required
+
+Clone Repo:
 ```
+git clone <repo-url>
+```
+
+# Setps to run task - 1:
+```
+git checkout task-1-vue-2
 npm install
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
+# Setps to run task - 2:
 ```
-npm run serve
+git checkout task-2-nuxt
+npm install
+npm run dev
+npm run test # to run unit tests
+npm run coverage # to run test coverage
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
