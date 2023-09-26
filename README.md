@@ -11,7 +11,7 @@ git clone <repo-url>
 ```
 git checkout task-1-vue-2
 npm install
-npm run dev
+npm run serve
 ```
 
 # Setps to run task - 2:
