@@ -1,0 +1,21 @@
+# Node.js runtime and build artifacts
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled output
+/dist/
+/.nuxt/
+/.sass-cache/
+# .env.* files should not be version controlled
+.env.local
+.env.*.local
+
+# Log files
+/logs/
+*.log
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
