@@ -71,13 +71,6 @@
                 </div>
               </div>
             </v-card>
-            <div v-if="!filteredTodos.length" class="d-flex justify-center">
-              <v-icon 
-                color="blue-darken-2"
-                icon="mdi-flask-empty-outline"
-              />
-              <div>Oops! Your to-do list is empty!</div>
-            </div>
           </v-col>
         </v-row>
       </v-container>
@@ -113,12 +106,12 @@
     showAddTodoModal.value = false
   }
   
-  const markAsComplete = (id: number | undefined) => {
+  const markAsComplete = (id: number) => {
     const index = todos.value.findIndex(todo => todo.id === id)
     todos.value[index].isComplete = true
   }
   
-  const removeTask = (id: number | undefined) => {
+  const removeTask = (id: number) => {
     const index = todos.value.findIndex(todo => todo.id === id)
     todos.value.splice(index, 1)
   }
