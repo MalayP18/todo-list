@@ -1,9 +1,9 @@
 <template>
   <v-dialog
-    :value="dialog"
+    :model-value="props.dialog"
     max-width="900"
   >
-    <v-card>
+  <v-card>
       <v-card-title class="text-h5">
         Add Todo
       </v-card-title>
@@ -27,16 +27,16 @@
         <v-spacer></v-spacer>
 
         <v-btn
-          text
-          @click="$emit('close')"
+          data-test-id="close-todo-modal"
+          @click="emit('close')"
         >
           Cancel
         </v-btn>
 
         <v-btn
-          :disabled="!title || !description"
+          :data-test-id="`add-todo-disabled-${disabled}`"
+          :disabled="disabled"
           color="primary"
-          text
           @click="addTodo"
         >
           Add
@@ -46,34 +46,31 @@
   </v-dialog>
 </template>
 
-<script>
-export default {
-  name: 'AddTodoModal',
-  props: {
-    dialog: {
-      type: Boolean,
-      required: true
-    }
-  },
-  data: function () {
-    return {
-      title: '',
-      description: ''
-    }
-  },
-  methods: {
-    reset () {
-      this.title = ''
-      this.description = ''
-    },
-    close () {
-      this.$emit('close')
-      this.reset()
-    },
-    addTodo () {
-      this.$emit('addTodo', { title: this.title, description: this.description })
-      this.close()
-    }
-  }
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+
+const props = defineProps<{
+  dialog: boolean
+}>();
+
+const emit = defineEmits(['close', 'addTodo']);
+
+const title = ref<string>('')
+const description = ref<string>('')
+
+const disabled = computed(() => !title.value || !description.value)
+
+const reset = () => {
+  title.value = ''
+  description.value = ''
+}
+const close = () => {
+  emit('close')
+  reset()
+}
+
+const addTodo = () => {
+  emit('addTodo', { title: title.value, description: description.value })
+  close()
 }
 </script>
